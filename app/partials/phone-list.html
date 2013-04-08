@@ -1,58 +1,36 @@
-<div class="container">
-  <div class="masthead">
-    <h3 class="muted">Phone Gallery</h3>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <ul class="nav">
-            <li><a href="#">Discover Android</a></li>
-            <li class="active"><a href="#">Browse Devices</a></li>
-            <li><a href="#">Get Apps</a></li>
-          </ul>
-        </div>
+<div class="masthead">
+  <h3 class="muted">Phone Gallery</h3>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav">
+          <li><a href="#">Discover Android</a></li>
+          <li class="active"><a href="#">Browse Devices</a></li>
+          <li><a href="#">Get Apps</a></li>
+        </ul>
       </div>
-    </div><!-- /.navbar -->
-  </div>
-  <hr>
-  <!-- Example row of columns -->
-  <div class="row phones">
-    <div ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="span5">
-      <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
-      <h4>{{phone.name}}</h4>
-      <p>{{phone.snippet}}</p>
-      <p><a class="btn" href="#/phones/{{phone.id}}">View details »</a></p>
     </div>
-  </div>
-  <hr>
-  <div class="footer">
-    <p>© Company 2013</p>
+  </div><!-- /.navbar -->
+</div>
+<hr>
+<div class="form-inline">
+  <input ng-model="query" type="text" placeholder="Search...">
+  <label>Sort by</label>
+  <select ng-model="orderProp">
+    <option value="name">Alphabetical</option>
+    <option value="age">Newest</option>
+  </select>
+</div>
+<!-- Example row of columns -->
+<div class="row phones">
+  <div ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="span5">
+    <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+    <h4>{{phone.name}}</h4>
+    <p>{{phone.snippet}}</p>
+    <p><a class="btn btn-info" href="#/phones/{{phone.id}}">View details <i class="icon-external-link"></i></a></p>
   </div>
 </div>
-
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span2">
-      <!--Sidebar content-->
-
-      Search: <input ng-model="query">
-      Sort by:
-      <select ng-model="orderProp">
-        <option value="name">Alphabetical</option>
-        <option value="age">Newest</option>
-      </select>
-
-    </div>
-    <div class="span10">
-      <!--Body content-->
-
-      <ul class="phones">
-        <li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail">
-          <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
-          <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
-          <p>{{phone.snippet}}</p>
-        </li>
-      </ul>
-
-    </div>
-  </div>
+<hr>
+<div class="footer">
+  <p>© Company 2013</p>
 </div>
